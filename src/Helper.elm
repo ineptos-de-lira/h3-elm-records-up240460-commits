@@ -62,14 +62,22 @@ videoGames =
     ]
 
 
-getVideogameGenres : List Videogame -> List String
+getVideogameGenres : List Videogame -> List (List String)
 getVideogameGenres list =
-    List.concatMap .genres list
+    List.map .genres list
 
 
-onlyStudents : List { name : String, uType : String } -> List { name : String, uType : String }
+onlyStudents : List { a | name : String, uType : String } -> List String
 onlyStudents list =
-    List.filter (\person -> person.uType == "Student") list
+    List.map
+        (\u ->
+            if u.uType == "Student" then
+                u.name
+
+            else
+                ""
+        )
+        list
 
 
 type alias Computer =
