@@ -3,6 +3,21 @@ module Helper exposing (..)
 import Html
 
 
+add2 : Int -> Int -> Int
+add2 int1 int2 =
+    int1 + int2
+
+
+add3 : Float -> Float -> Float -> Float
+add3 num1 num2 num3 =
+    num1 + num2 + num3
+
+
+calc : Int -> Int -> (Int -> Int -> Int) -> Int
+calc int1 int2 operator =
+    operator int1 int2
+
+
 languages : List { name : String, releaseYear : Int, currentVersion : String }
 languages =
     [ { name = "Elm"
