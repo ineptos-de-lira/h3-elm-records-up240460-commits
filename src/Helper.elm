@@ -31,8 +31,8 @@ languages =
     ]
 
 
-languageName : List { name : String, releaseYear : Int, currentVersion : String } -> List String
-languageName list =
+languageNames : List { name : String, releaseYear : Int, currentVersion : String } -> List String
+languageNames list =
     List.map .name list
 
 
@@ -62,9 +62,14 @@ videoGames =
     ]
 
 
-getVideoGameGenres : List Videogame -> List (List String)
-getVideoGameGenres list =
-    List.map .genres list
+getVideogameGenres : List Videogame -> List String
+getVideogameGenres list =
+    List.concatMap .genres list
+
+
+onlyStudents : List { name : String, uType : String } -> List { name : String, uType : String }
+onlyStudents list =
+    List.filter (\person -> person.uType == "Student") list
 
 
 type alias Computer =
